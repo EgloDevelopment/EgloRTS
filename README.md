@@ -12,7 +12,12 @@ let ws
 ws = new WebSocket("wss://your-server-url:5000");
 
 ws.onopen = () => {
-    ws.send(JSON.stringify({ $websocket_data.action: "subscribe", $websocket_data.id: "your-unique-identifier" }));
+    ws.send(JSON.stringify({ 
+        $websocket_data: {
+            action: "subscribe",
+            id: "your-unique-indentifier",
+        } 
+    }));
 };
 
 ws.onmessage = async function (event) {
