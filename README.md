@@ -9,7 +9,7 @@ Simple realtime server for messaging and other events
 ```
 let ws
 
-ws = new WebSocket("wss://backend.eglo.pw/data/realtime");
+ws = new WebSocket("wss://your-server-url:5000");
 
 ws.onopen = () => {
     ws.send(JSON.stringify({ $websocket_data.action: "subscribe", $websocket_data.id: "your-unique-identifier" }));

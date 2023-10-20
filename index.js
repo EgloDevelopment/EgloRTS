@@ -15,6 +15,6 @@ app.get("/", (req, res) => {
   res.send("EgloRTS");
 });
 
-server.listen(5010, () => {
+server.listen(5000, () => {
   console.log(`🎉  EgloRTS listening on port 5000`);
 });
