@@ -10,8 +10,8 @@ const setupWebSocket = (server, app) => {
       const data = JSON.parse(message);
 
       // Subscribe to a channel
-      if (data.action === "subscribe") {
-        const channel = data.id;
+      if (data.$websocket_data.action === "subscribe") {
+        const channel = data.$websocket_data.id;
         if (!channels[channel]) {
           channels[channel] = [];
         }
@@ -19,8 +19,8 @@ const setupWebSocket = (server, app) => {
       }
 
       // Unsubscribe from a channel
-      if (data.action === "unsubscribe") {
-        const channel = data.id;
+      if (data.$websocket_data.action === "unsubscribe") {
+        const channel = data.$websocket_data.id;
         if (channels[channel]) {
           channels[channel] = channels[channel].filter(
             (client) => client !== ws
@@ -29,8 +29,8 @@ const setupWebSocket = (server, app) => {
       }
 
       // Publish a message to a channel
-      if (data.action === "publish") {
-        const channel = data.id;
+      if (data.$websocket_data.action === "publish") {
+        const channel = data.$websocket_data.id;
         if (channels[channel]) {
           channels[channel].forEach((client) => {
             client.send(JSON.stringify(data));
@@ -40,7 +40,14 @@ const setupWebSocket = (server, app) => {
     });
   });
 
-  console.log("👍  Websockets setup!")
+  console.log("👍  Websockets setup!");
 };
 
 module.exports = setupWebSocket;
+
+console.log({
+  $websocket_data: {
+    action: "publish",
+    id: "your-unique-indentifier",
+  },
+});
