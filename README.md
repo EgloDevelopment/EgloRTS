@@ -44,4 +44,5 @@ if (ws) {
 ```
 
 # Actions
+
 Currently the only actions are "subscribe", "publish", and "unsubscribe"

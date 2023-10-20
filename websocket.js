@@ -44,10 +44,3 @@ const setupWebSocket = (server, app) => {
 };
 
 module.exports = setupWebSocket;
-
-console.log({
-  $websocket_data: {
-    action: "publish",
-    id: "your-unique-indentifier",
-  },
-});
